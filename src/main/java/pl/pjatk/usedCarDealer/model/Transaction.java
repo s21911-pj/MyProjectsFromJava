@@ -15,5 +15,5 @@ public class Transaction {
     private Date transactionDate;
     private double transactionCost;
 
-    private List
+//    private List
 }
