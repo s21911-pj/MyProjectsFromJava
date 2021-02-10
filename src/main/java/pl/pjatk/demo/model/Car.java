@@ -1,10 +1,10 @@
 package pl.pjatk.demo.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Car {
@@ -19,6 +19,9 @@ public class Car {
     private int owner;
 
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "transaction")
+    private List<Car>carList;
 
     public Car() {
     }
