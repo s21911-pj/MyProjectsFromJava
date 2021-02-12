@@ -17,21 +17,24 @@ public class CarController {
     public CarController(CarService carService) {
         this.carService = carService;
     }
+
     @GetMapping("/getAllCars")
-    public ResponseEntity<List<Car>>findAllCars(){
+    public ResponseEntity<List<Car>> findAllCars() {
         return ResponseEntity.status(HttpStatus.OK).body(carService.findAll());
     }
+
     @GetMapping("/{id}")
-    public ResponseEntity<Car>findById(@PathVariable Long id){
+    public ResponseEntity<Car> findById(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(carService.findById(id));
     }
+
     @PostMapping("/newCar")
-    public ResponseEntity<Car>addNewCar(@RequestBody Car car){
+    public ResponseEntity<Car> addNewCar(@RequestBody Car car) {
         return ResponseEntity.ok(carService.addNewCar(car));
     }
 
     @PutMapping("/uptade")
-    public ResponseEntity<Car>uptadeCar(@RequestBody Car car,@PathVariable Long id){
-        return ResponseEntity.status(HttpStatus.OK).body(carService.uptadeCar(car,id));
+    public ResponseEntity<Car> uptadeCar(@RequestBody Car car, @PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(carService.uptadeCar(car, id));
     }
 }

@@ -16,8 +16,7 @@ public class Transaction {
 
     @JsonIgnore
     @OneToMany(mappedBy = "transaction")
-    private List<Car>transactionCarList;
-
+    private List<Car> transactionCarList;
 
 
     public Transaction() {
