@@ -3,7 +3,7 @@ package pl.pjatk.demo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 public class Client {
@@ -15,8 +15,9 @@ public class Client {
     private String surname;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "transaction")
-    private List<Client> clientList;
+    @ManyToOne
+    @JoinColumn(name = "Transaction_id")
+    private Transaction transaction;
 
     public Client() {
     }
@@ -53,19 +54,13 @@ public class Client {
         this.surname = surname;
     }
 
-    public List<Client> getClientList() {
-        return clientList;
-    }
 
-    public void setClientList(List<Client> clientList) {
-        this.clientList = clientList;
-    }
 
-    public Client(Long id, double money, String name, String surname, List<Client> clientList) {
+    public Client(Long id, double money, String name, String surname) {
         this.id = id;
         this.money = money;
         this.name = name;
         this.surname = surname;
-        this.clientList = clientList;
+
     }
 }

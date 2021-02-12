@@ -4,7 +4,7 @@ package pl.pjatk.demo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 public class Car {
@@ -20,8 +20,9 @@ public class Car {
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "transaction")
-    private List<Car>carList;
+    @ManyToOne
+    @JoinColumn(name = "Transaction_id")
+    private Transaction transaction;
 
     public Car() {
     }

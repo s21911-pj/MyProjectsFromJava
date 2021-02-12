@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Transaction {
@@ -13,7 +14,9 @@ public class Transaction {
     private Date transactionDate;
     private double transactionCost;
 
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "transaction")
+    private List<Car>transactionCarList;
 
 
 
@@ -42,6 +45,13 @@ public class Transaction {
 
     public void setTransactionCost(double transactionCost) {
         this.transactionCost = transactionCost;
+    }
+
+    public Transaction(Long id, Date transactionDate, double transactionCost, List<Transaction> transactionList) {
+        this.id = id;
+        this.transactionDate = transactionDate;
+        this.transactionCost = transactionCost;
+
     }
 
     public Transaction(Long id, Date transactionDate, double transactionCost) {
