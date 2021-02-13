@@ -35,4 +35,15 @@ public class ClientService {
         return clientRepository.save(client);
     }
 
+    public Client uptadeClient(Client uptadedClient, Long id){
+        Client client = clientRepository.findById(id).orElseThrow(()->new ClientNotFoundException(id));
+        if(uptadedClient.getMoney()!=0){
+            client.setMoney(uptadedClient.getMoney());
+        }if(uptadedClient.getName()!=null){
+            client.setName(uptadedClient.getName());
+        }if(uptadedClient.getSurname()!=null){
+            client.setSurname(uptadedClient.getSurname());
+        }return clientRepository.save(client);
+    }
+
 }

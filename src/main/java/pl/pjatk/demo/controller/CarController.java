@@ -30,6 +30,7 @@ public class CarController {
 
     @PostMapping("/newCar")
     public ResponseEntity<Car> addNewCar(@RequestBody Car car) {
+
         return ResponseEntity.ok(carService.addNewCar(car));
     }
 

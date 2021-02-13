@@ -25,5 +25,12 @@ public class ClientController {
     public ResponseEntity<Client> findById(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body((clientService.findById(id)));
     }
-    @PutMapping
+    @PostMapping("/newClient")
+    public ResponseEntity<Client> addNewClient(@RequestBody Client client){
+        return ResponseEntity.ok(clientService.addNewClient(client));
+    }
+    @PutMapping("/uptadeClient")
+    public ResponseEntity<Client> uptadeClient(@RequestBody Client client,@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(clientService.uptadeClient(client,id));
+    }
 }
