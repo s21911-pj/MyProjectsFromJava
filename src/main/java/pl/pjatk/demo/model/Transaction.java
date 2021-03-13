@@ -18,6 +18,10 @@ public class Transaction {
     @OneToMany(mappedBy = "transaction")
     private List<Car> transactionCarList;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "transaction")
+    private List<Client> transactionClientList;
+
 
     public Transaction() {
     }

@@ -36,6 +36,6 @@ public class CarController {
 
     @PutMapping("/uptade")
     public ResponseEntity<Car> uptadeCar(@RequestBody Car car, @PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(carService.uptadeCar(car, id));
+        return ResponseEntity.status(HttpStatus.OK).body(carService.updateCar(car, id));
     }
 }

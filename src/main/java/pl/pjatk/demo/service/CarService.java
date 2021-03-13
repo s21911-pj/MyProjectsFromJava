@@ -35,7 +35,7 @@ public class CarService {
         return carRepository.save(car);
     }
 
-    public Car uptadeCar(Car changedCar, Long id) {
+    public Car updateCar(Car changedCar, Long id) {
         Car car = carRepository.findById(id).orElseThrow(() -> new CarException(id));
         if (changedCar.getCarBrand() != null) {
             car.setCarBrand(changedCar.getCarBrand());
