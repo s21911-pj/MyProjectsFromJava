@@ -1,6 +1,10 @@
 package pl.pjatk.core;
 
+
+
+
 public class Pojo {
+
 
     private int number;
     private double koszt;
