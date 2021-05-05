@@ -1,6 +1,7 @@
 package pl.pjatk.core.controller;
 
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.pjatk.core.Student;
@@ -35,20 +36,17 @@ public class HomeworkController {
     public ResponseEntity<Student> checkStudentRate(@PathVariable Long id){
         return ResponseEntity.ok(studentService.checkStudentRate(id));
     }
+    @PostMapping("/check")
+    public ResponseEntity<Student> checkName(@RequestBody Student student){
+        return ResponseEntity.ok(studentService.checkName(student));
+    }
+    @DeleteMapping("/deleteById/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable Long id){
+        studentService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 
-    /*@PutMapping("/employees/{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employeeId,
-                                                   @Valid @RequestBody Employee employeeDetails) throws ResourceNotFoundException {
-        Employee employee = employeeRepository.findById(employeeId)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
-
-        employee.setEmailId(employeeDetails.getEmailId());
-        employee.setLastName(employeeDetails.getLastName());
-        employee.setFirstName(employeeDetails.getFirstName());
-        final Employee updatedEmployee = employeeRepository.save(employee);
-        return ResponseEntity.ok(updatedEmployee);
-    }*/
 
 
     /*Stwórz dodatkowo logikę dla pozostałych metod PUT / POST / DELTE. Dla metody PUT skorzystaj z PathVariable oraz RequestBody.

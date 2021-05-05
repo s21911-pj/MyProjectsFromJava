@@ -1,15 +1,10 @@
 package pl.pjatk.core;
 
-import org.springframework.data.annotation.Id;
 
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 
 
 public class Student {
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)*/
+
     private Long id;
     private int rate;
     private String name;

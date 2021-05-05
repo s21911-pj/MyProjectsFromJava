@@ -1,13 +1,17 @@
 package pl.pjatk.core.service;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import pl.pjatk.core.Student;
+
+import pl.pjatk.core.exception.NoNameException;
 import pl.pjatk.core.exception.StudentException;
 import pl.pjatk.core.repository.StudentRepository;
 
 import java.util.List;
 
-@Service
+
+@Component
 public class StudentService {
 
     private final StudentRepository studentRepository;
@@ -19,6 +23,10 @@ public class StudentService {
     public List<Student> findAll(){
         return studentRepository.findAll();
     }
+    public Student findById(Long id){
+        return studentRepository.findById(id).orElseThrow(()-> new StudentException(id));
+    }
+
 
     public Student studentUpdate(Long id, Student studentToUpdate) {
         Student student = studentRepository.findById(id).orElseThrow(() -> new StudentException(id));
@@ -50,6 +58,19 @@ public class StudentService {
         }
 
         return studentRepository.save(student);
+    }
+
+    public Student checkName(Student student){
+        if(student.getName()==null){
+            throw new NoNameException("no way u are hidding something? ");
+        }
+        if (student.getForname()==null){
+            throw new NoNameException("Give ur id now!!");
+        }
+        return studentRepository.save(student);
+    }
+    public void deleteById(Long id){
+        studentRepository.deleteById(id);
     }
 
 }
