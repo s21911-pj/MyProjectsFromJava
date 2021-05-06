@@ -27,12 +27,12 @@ public class HomeworkController {
     public ResponseEntity<String> getSecondChallenge(@RequestParam ("second") String second){
         return  ResponseEntity.ok ("SecondChallenge " + second);
     }
-    @PutMapping("/Student/{id}")
+    @PutMapping("/student/{id}")
     public ResponseEntity<Student> studentToUpdate(@PathVariable Long id,@RequestBody Student student){
         return ResponseEntity.ok(studentService.studentUpdate(id,student));
     }
 
-    @PutMapping("/Student/{id}")
+    @PutMapping("/studentRate/{id}")
     public ResponseEntity<Student> checkStudentRate(@PathVariable Long id){
         return ResponseEntity.ok(studentService.checkStudentRate(id));
     }
